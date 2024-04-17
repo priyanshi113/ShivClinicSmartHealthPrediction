@@ -1,0 +1,53 @@
+/* CSS Document */
+@-webkit-keyframes fade-out {
+					0% { opacity: 1; -webkit-transform: scale(1);}
+					85% {opacity: 1; -webkit-transform: scale(1.05);}
+					100% {-webkit-transform: scale(.1); opacity: 0;}
+				}
+				
+				.fade-out {
+					width:30%;
+					-webkit-animation: fade-out .99s ease-in;
+					-webkit-animation-fill-mode: forwards;
+					-webkit-animation-iteration-count: 1;
+					background-color:#00acef;
+					opacity: 1;
+					color:#FFF;
+					text-align:center;
+					border-radius:10px;
+					padding:5px;
+					margin-left:auto;
+					margin-right:auto;
+				}
+				
+				.fade-out.one {-webkit-animation-delay: .10s;}
+				.fade-out.two {-webkit-animation-delay: 1s;}
+				.fade-out.three {-webkit-animation-delay: 2s;}
+				.fade-out.four {-webkit-animation-delay: 3s;}
+				
+				@-webkit-keyframes fade-out-danger {
+					0% { opacity: 1; -webkit-transform: scale(1);}
+					85% {opacity: 1; -webkit-transform: scale(1.05);}
+					100% {-webkit-transform: scale(.1); opacity: 0;}
+				}
+				
+				.fade-out-danger {
+					width:30%;
+					-webkit-animation: fade-out .99s ease-in;
+					-webkit-animation-fill-mode: forwards;
+					-webkit-animation-iteration-count: 1;
+					background-color:#C00;
+					opacity: 1;
+					color:#FFF;
+					text-align:center;
+					border-radius:10px;
+					padding:5px;
+					margin-left:auto;
+					margin-right:auto;
+				}
+				
+				.fade-out-danger.one {-webkit-animation-delay: .10s;}
+				.fade-out-danger.two {-webkit-animation-delay: 1s;}
+				.fade-out-danger.three {-webkit-animation-delay: 2s;}
+				.fade-out-danger.four {-webkit-animation-delay: 3s;}
+

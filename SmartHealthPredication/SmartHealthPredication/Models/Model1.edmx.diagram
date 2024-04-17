@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0631ed29274c43d08d484ed4768cd0f4" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="SmartHealthPredicationModel.tblDiseases" Width="2" PointX="11" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartHealthPredicationModel.tblDiseasesPredictionList" Width="1.875" PointX="8.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartHealthPredicationModel.tblDoctorAppointment" Width="1.875" PointX="5.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartHealthPredicationModel.tblSymptomsList" Width="1.875" PointX="11.125" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartHealthPredicationModel.tblSymptomsPrediction" Width="2.125" PointX="8.125" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartHealthPredicationModel.tblUserRegistration" Width="2" PointX="3" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartHealthPredicationModel.View_AppoinmentList" Width="1.5" PointX="0.5" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartHealthPredicationModel.View_DiseasesPrediction" Width="1.5" PointX="0.5" PointY="6.375" IsExpanded="true" />
+        <AssociationConnector Association="SmartHealthPredicationModel.FK_tblDiseasesPredictionList_tblDiseases" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartHealthPredicationModel.FK_tblDiseasesPredictionList_tblSymptomsPrediction" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartHealthPredicationModel.FK_tblDoctorAppointment_tblDiseasesPredictionList" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartHealthPredicationModel.FK_tblDoctorAppointment_tblUserRegistration" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartHealthPredicationModel.FK_tblDoctorAppointment_tblUserRegistration1" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartHealthPredicationModel.FK_tblSymptomsPrediction_tblSymptomsList" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SmartHealthPredicationModel.tblUserRole" Width="1.5" PointX="0.875" PointY="0.5" />
+        <AssociationConnector Association="SmartHealthPredicationModel.FK_tblUserRegistration_tblUserRole" />
+        <EntityTypeShape EntityType="SmartHealthPredicationModel.tblFeedBack" Width="1.5" PointX="3.5" PointY="5.5" />
+        <AssociationConnector Association="SmartHealthPredicationModel.FK_tblFeedBack_tblUserRegistration" />
+        <AssociationConnector Association="SmartHealthPredicationModel.FK_tblFeedBack_tblUserRegistration1" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

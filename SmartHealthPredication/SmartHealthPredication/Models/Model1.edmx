@@ -1,0 +1,753 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SmartHealthPredicationModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblDiseases">
+          <Key>
+            <PropertyRef Name="DiseasesID" />
+          </Key>
+          <Property Name="DiseasesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DiseasesName" Type="varchar" MaxLength="50" />
+          <Property Name="images" Type="varchar" MaxLength="100" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblDiseasesPredictionList">
+          <Key>
+            <PropertyRef Name="DiseasesPredictionListID" />
+          </Key>
+          <Property Name="DiseasesPredictionListID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SymptomsPredictionID" Type="int" />
+          <Property Name="DiseasesID" Type="int" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblDoctorAppointment">
+          <Key>
+            <PropertyRef Name="AppointmentID" />
+          </Key>
+          <Property Name="AppointmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaitentID" Type="int" />
+          <Property Name="DoctorID" Type="int" />
+          <Property Name="DiseasesPredictionID" Type="int" />
+          <Property Name="RequestDate" Type="datetime" />
+          <Property Name="BookingDate" Type="datetime" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblFeedBack">
+          <Key>
+            <PropertyRef Name="FeedBackID" />
+          </Key>
+          <Property Name="FeedBackID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatientID" Type="int" />
+          <Property Name="PatientName" Type="varchar" MaxLength="50" />
+          <Property Name="DoctorID" Type="int" />
+          <Property Name="DoctorName" Type="varchar" MaxLength="50" />
+          <Property Name="Rating" Type="varchar" MaxLength="50" />
+          <Property Name="Feedback" Type="varchar" MaxLength="500" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblSymptomsList">
+          <Key>
+            <PropertyRef Name="SymptomsID" />
+          </Key>
+          <Property Name="SymptomsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SymptomsName" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblSymptomsPrediction">
+          <Key>
+            <PropertyRef Name="SymptomsPredictionID" />
+          </Key>
+          <Property Name="SymptomsPredictionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SymptomsID" Type="int" />
+          <Property Name="SymptomsPredictionName" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblUserRegistration">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleID" Type="int" />
+          <Property Name="UserFullName" Type="varchar" MaxLength="50" />
+          <Property Name="EmailID" Type="varchar" MaxLength="50" />
+          <Property Name="MoblieNumber" Type="varchar" MaxLength="50" />
+          <Property Name="AdharCardNumber" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="varchar" MaxLength="15" />
+          <Property Name="DateOfBirth" Type="date" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="Designation" Type="varchar" MaxLength="90" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblUserRole">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="RoleName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SmartHealthPredication.dbo.View_AppoinmentList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_AppoinmentList">
+          <Key>
+            <PropertyRef Name="AppointmentID" />
+          </Key>
+          <Property Name="AppointmentID" Type="int" Nullable="false" />
+          <Property Name="PaitentID" Type="int" />
+          <Property Name="DoctorID" Type="int" />
+          <Property Name="SymptomsID" Type="int" />
+          <Property Name="DiseasesPredictionID" Type="int" />
+          <Property Name="SymptomsPredictionID" Type="int" />
+          <Property Name="SymptomsPredictionName" Type="varchar" MaxLength="50" />
+          <Property Name="DiseasesID" Type="int" />
+          <Property Name="DiseasesName" Type="varchar" MaxLength="50" />
+          <Property Name="images" Type="varchar" MaxLength="100" />
+          <Property Name="RequestDate" Type="datetime" />
+          <Property Name="BookingDate" Type="datetime" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="Expr1" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SmartHealthPredication.dbo.View_DiseasesPrediction' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_DiseasesPrediction">
+          <Key>
+            <PropertyRef Name="DiseasesPredictionListID" />
+          </Key>
+          <Property Name="DiseasesPredictionListID" Type="int" Nullable="false" />
+          <Property Name="SymptomsPredictionID" Type="int" />
+          <Property Name="SymptomsPredictionName" Type="varchar" MaxLength="50" />
+          <Property Name="DiseasesID" Type="int" />
+          <Property Name="DiseasesName" Type="varchar" MaxLength="50" />
+          <Property Name="images" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK_tblDiseasesPredictionList_tblDiseases">
+          <End Role="tblDiseases" Type="Self.tblDiseases" Multiplicity="0..1" />
+          <End Role="tblDiseasesPredictionList" Type="Self.tblDiseasesPredictionList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDiseases">
+              <PropertyRef Name="DiseasesID" />
+            </Principal>
+            <Dependent Role="tblDiseasesPredictionList">
+              <PropertyRef Name="DiseasesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblDiseasesPredictionList_tblSymptomsPrediction">
+          <End Role="tblSymptomsPrediction" Type="Self.tblSymptomsPrediction" Multiplicity="0..1" />
+          <End Role="tblDiseasesPredictionList" Type="Self.tblDiseasesPredictionList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSymptomsPrediction">
+              <PropertyRef Name="SymptomsPredictionID" />
+            </Principal>
+            <Dependent Role="tblDiseasesPredictionList">
+              <PropertyRef Name="SymptomsPredictionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblDoctorAppointment_tblDiseasesPredictionList">
+          <End Role="tblDiseasesPredictionList" Type="Self.tblDiseasesPredictionList" Multiplicity="0..1" />
+          <End Role="tblDoctorAppointment" Type="Self.tblDoctorAppointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDiseasesPredictionList">
+              <PropertyRef Name="DiseasesPredictionListID" />
+            </Principal>
+            <Dependent Role="tblDoctorAppointment">
+              <PropertyRef Name="DiseasesPredictionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblDoctorAppointment_tblUserRegistration">
+          <End Role="tblUserRegistration" Type="Self.tblUserRegistration" Multiplicity="0..1" />
+          <End Role="tblDoctorAppointment" Type="Self.tblDoctorAppointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUserRegistration">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tblDoctorAppointment">
+              <PropertyRef Name="PaitentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblDoctorAppointment_tblUserRegistration1">
+          <End Role="tblUserRegistration" Type="Self.tblUserRegistration" Multiplicity="0..1" />
+          <End Role="tblDoctorAppointment" Type="Self.tblDoctorAppointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUserRegistration">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tblDoctorAppointment">
+              <PropertyRef Name="DoctorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblFeedBack_tblUserRegistration">
+          <End Role="tblUserRegistration" Type="Self.tblUserRegistration" Multiplicity="0..1" />
+          <End Role="tblFeedBack" Type="Self.tblFeedBack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUserRegistration">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tblFeedBack">
+              <PropertyRef Name="PatientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblFeedBack_tblUserRegistration1">
+          <End Role="tblUserRegistration" Type="Self.tblUserRegistration" Multiplicity="0..1" />
+          <End Role="tblFeedBack" Type="Self.tblFeedBack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUserRegistration">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tblFeedBack">
+              <PropertyRef Name="DoctorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSymptomsPrediction_tblSymptomsList">
+          <End Role="tblSymptomsList" Type="Self.tblSymptomsList" Multiplicity="0..1" />
+          <End Role="tblSymptomsPrediction" Type="Self.tblSymptomsPrediction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSymptomsList">
+              <PropertyRef Name="SymptomsID" />
+            </Principal>
+            <Dependent Role="tblSymptomsPrediction">
+              <PropertyRef Name="SymptomsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserRegistration_tblUserRole">
+          <End Role="tblUserRole" Type="Self.tblUserRole" Multiplicity="0..1" />
+          <End Role="tblUserRegistration" Type="Self.tblUserRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUserRole">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="tblUserRegistration">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SmartHealthPredicationModelStoreContainer">
+          <EntitySet Name="tblDiseases" EntityType="Self.tblDiseases" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDiseasesPredictionList" EntityType="Self.tblDiseasesPredictionList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDoctorAppointment" EntityType="Self.tblDoctorAppointment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblFeedBack" EntityType="Self.tblFeedBack" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSymptomsList" EntityType="Self.tblSymptomsList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSymptomsPrediction" EntityType="Self.tblSymptomsPrediction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserRegistration" EntityType="Self.tblUserRegistration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserRole" EntityType="Self.tblUserRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="View_AppoinmentList" EntityType="Self.View_AppoinmentList" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_AppoinmentList].[AppointmentID] AS [AppointmentID], 
+    [View_AppoinmentList].[PaitentID] AS [PaitentID], 
+    [View_AppoinmentList].[DoctorID] AS [DoctorID], 
+    [View_AppoinmentList].[SymptomsID] AS [SymptomsID], 
+    [View_AppoinmentList].[DiseasesPredictionID] AS [DiseasesPredictionID], 
+    [View_AppoinmentList].[SymptomsPredictionID] AS [SymptomsPredictionID], 
+    [View_AppoinmentList].[SymptomsPredictionName] AS [SymptomsPredictionName], 
+    [View_AppoinmentList].[DiseasesID] AS [DiseasesID], 
+    [View_AppoinmentList].[DiseasesName] AS [DiseasesName], 
+    [View_AppoinmentList].[images] AS [images], 
+    [View_AppoinmentList].[RequestDate] AS [RequestDate], 
+    [View_AppoinmentList].[BookingDate] AS [BookingDate], 
+    [View_AppoinmentList].[Status] AS [Status], 
+    [View_AppoinmentList].[Expr1] AS [Expr1]
+    FROM [dbo].[View_AppoinmentList] AS [View_AppoinmentList]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_DiseasesPrediction" EntityType="Self.View_DiseasesPrediction" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_DiseasesPrediction].[DiseasesPredictionListID] AS [DiseasesPredictionListID], 
+    [View_DiseasesPrediction].[SymptomsPredictionID] AS [SymptomsPredictionID], 
+    [View_DiseasesPrediction].[SymptomsPredictionName] AS [SymptomsPredictionName], 
+    [View_DiseasesPrediction].[DiseasesID] AS [DiseasesID], 
+    [View_DiseasesPrediction].[DiseasesName] AS [DiseasesName], 
+    [View_DiseasesPrediction].[images] AS [images]
+    FROM [dbo].[View_DiseasesPrediction] AS [View_DiseasesPrediction]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_tblDiseasesPredictionList_tblDiseases" Association="Self.FK_tblDiseasesPredictionList_tblDiseases">
+            <End Role="tblDiseases" EntitySet="tblDiseases" />
+            <End Role="tblDiseasesPredictionList" EntitySet="tblDiseasesPredictionList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblDiseasesPredictionList_tblSymptomsPrediction" Association="Self.FK_tblDiseasesPredictionList_tblSymptomsPrediction">
+            <End Role="tblSymptomsPrediction" EntitySet="tblSymptomsPrediction" />
+            <End Role="tblDiseasesPredictionList" EntitySet="tblDiseasesPredictionList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblDoctorAppointment_tblDiseasesPredictionList" Association="Self.FK_tblDoctorAppointment_tblDiseasesPredictionList">
+            <End Role="tblDiseasesPredictionList" EntitySet="tblDiseasesPredictionList" />
+            <End Role="tblDoctorAppointment" EntitySet="tblDoctorAppointment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblDoctorAppointment_tblUserRegistration" Association="Self.FK_tblDoctorAppointment_tblUserRegistration">
+            <End Role="tblUserRegistration" EntitySet="tblUserRegistration" />
+            <End Role="tblDoctorAppointment" EntitySet="tblDoctorAppointment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblDoctorAppointment_tblUserRegistration1" Association="Self.FK_tblDoctorAppointment_tblUserRegistration1">
+            <End Role="tblUserRegistration" EntitySet="tblUserRegistration" />
+            <End Role="tblDoctorAppointment" EntitySet="tblDoctorAppointment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblFeedBack_tblUserRegistration" Association="Self.FK_tblFeedBack_tblUserRegistration">
+            <End Role="tblUserRegistration" EntitySet="tblUserRegistration" />
+            <End Role="tblFeedBack" EntitySet="tblFeedBack" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblFeedBack_tblUserRegistration1" Association="Self.FK_tblFeedBack_tblUserRegistration1">
+            <End Role="tblUserRegistration" EntitySet="tblUserRegistration" />
+            <End Role="tblFeedBack" EntitySet="tblFeedBack" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSymptomsPrediction_tblSymptomsList" Association="Self.FK_tblSymptomsPrediction_tblSymptomsList">
+            <End Role="tblSymptomsList" EntitySet="tblSymptomsList" />
+            <End Role="tblSymptomsPrediction" EntitySet="tblSymptomsPrediction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserRegistration_tblUserRole" Association="Self.FK_tblUserRegistration_tblUserRole">
+            <End Role="tblUserRole" EntitySet="tblUserRole" />
+            <End Role="tblUserRegistration" EntitySet="tblUserRegistration" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SmartHealthPredicationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblDiseases">
+          <Key>
+            <PropertyRef Name="DiseasesID" />
+          </Key>
+          <Property Name="DiseasesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DiseasesName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="images" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblDiseasesPredictionList" Relationship="Self.FK_tblDiseasesPredictionList_tblDiseases" FromRole="tblDiseases" ToRole="tblDiseasesPredictionList" />
+        </EntityType>
+        <EntityType Name="tblDiseasesPredictionList">
+          <Key>
+            <PropertyRef Name="DiseasesPredictionListID" />
+          </Key>
+          <Property Name="DiseasesPredictionListID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SymptomsPredictionID" Type="Int32" />
+          <Property Name="DiseasesID" Type="Int32" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblDiseases" Relationship="Self.FK_tblDiseasesPredictionList_tblDiseases" FromRole="tblDiseasesPredictionList" ToRole="tblDiseases" />
+          <NavigationProperty Name="tblSymptomsPrediction" Relationship="Self.FK_tblDiseasesPredictionList_tblSymptomsPrediction" FromRole="tblDiseasesPredictionList" ToRole="tblSymptomsPrediction" />
+          <NavigationProperty Name="tblDoctorAppointment" Relationship="Self.FK_tblDoctorAppointment_tblDiseasesPredictionList" FromRole="tblDiseasesPredictionList" ToRole="tblDoctorAppointment" />
+        </EntityType>
+        <EntityType Name="tblDoctorAppointment">
+          <Key>
+            <PropertyRef Name="AppointmentID" />
+          </Key>
+          <Property Name="AppointmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaitentID" Type="Int32" />
+          <Property Name="DoctorID" Type="Int32" />
+          <Property Name="DiseasesPredictionID" Type="Int32" />
+          <Property Name="RequestDate" Type="DateTime" Precision="3" />
+          <Property Name="BookingDate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblDiseasesPredictionList" Relationship="Self.FK_tblDoctorAppointment_tblDiseasesPredictionList" FromRole="tblDoctorAppointment" ToRole="tblDiseasesPredictionList" />
+          <NavigationProperty Name="tblUserRegistration" Relationship="Self.FK_tblDoctorAppointment_tblUserRegistration" FromRole="tblDoctorAppointment" ToRole="tblUserRegistration" />
+          <NavigationProperty Name="tblUserRegistration1" Relationship="Self.FK_tblDoctorAppointment_tblUserRegistration1" FromRole="tblDoctorAppointment" ToRole="tblUserRegistration" />
+        </EntityType>
+        <EntityType Name="tblSymptomsList">
+          <Key>
+            <PropertyRef Name="SymptomsID" />
+          </Key>
+          <Property Name="SymptomsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SymptomsName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblSymptomsPrediction" Relationship="Self.FK_tblSymptomsPrediction_tblSymptomsList" FromRole="tblSymptomsList" ToRole="tblSymptomsPrediction" />
+        </EntityType>
+        <EntityType Name="tblSymptomsPrediction">
+          <Key>
+            <PropertyRef Name="SymptomsPredictionID" />
+          </Key>
+          <Property Name="SymptomsPredictionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SymptomsID" Type="Int32" />
+          <Property Name="SymptomsPredictionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblDiseasesPredictionList" Relationship="Self.FK_tblDiseasesPredictionList_tblSymptomsPrediction" FromRole="tblSymptomsPrediction" ToRole="tblDiseasesPredictionList" />
+          <NavigationProperty Name="tblSymptomsList" Relationship="Self.FK_tblSymptomsPrediction_tblSymptomsList" FromRole="tblSymptomsPrediction" ToRole="tblSymptomsList" />
+        </EntityType>
+        <EntityType Name="tblUserRegistration">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleID" Type="Int32" />
+          <Property Name="UserFullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MoblieNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AdharCardNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Designation" Type="String" MaxLength="90" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblDoctorAppointment" Relationship="Self.FK_tblDoctorAppointment_tblUserRegistration" FromRole="tblUserRegistration" ToRole="tblDoctorAppointment" />
+          <NavigationProperty Name="tblDoctorAppointment1" Relationship="Self.FK_tblDoctorAppointment_tblUserRegistration1" FromRole="tblUserRegistration" ToRole="tblDoctorAppointment" />
+          <NavigationProperty Name="tblUserRole" Relationship="SmartHealthPredicationModel.FK_tblUserRegistration_tblUserRole" FromRole="tblUserRegistration" ToRole="tblUserRole" />
+          <NavigationProperty Name="tblFeedBack" Relationship="SmartHealthPredicationModel.FK_tblFeedBack_tblUserRegistration" FromRole="tblUserRegistration" ToRole="tblFeedBack" />
+          <NavigationProperty Name="tblFeedBack1" Relationship="SmartHealthPredicationModel.FK_tblFeedBack_tblUserRegistration1" FromRole="tblUserRegistration" ToRole="tblFeedBack" />
+          </EntityType>
+        <EntityType Name="View_AppoinmentList">
+          <Key>
+            <PropertyRef Name="AppointmentID" />
+          </Key>
+          <Property Name="AppointmentID" Type="Int32" Nullable="false" />
+          <Property Name="PaitentID" Type="Int32" />
+          <Property Name="DoctorID" Type="Int32" />
+          <Property Name="SymptomsID" Type="Int32" />
+          <Property Name="DiseasesPredictionID" Type="Int32" />
+          <Property Name="SymptomsPredictionID" Type="Int32" />
+          <Property Name="SymptomsPredictionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DiseasesID" Type="Int32" />
+          <Property Name="DiseasesName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="images" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RequestDate" Type="DateTime" Precision="3" />
+          <Property Name="BookingDate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Expr1" Type="Int32" />
+        </EntityType>
+        <EntityType Name="View_DiseasesPrediction">
+          <Key>
+            <PropertyRef Name="DiseasesPredictionListID" />
+          </Key>
+          <Property Name="DiseasesPredictionListID" Type="Int32" Nullable="false" />
+          <Property Name="SymptomsPredictionID" Type="Int32" />
+          <Property Name="SymptomsPredictionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DiseasesID" Type="Int32" />
+          <Property Name="DiseasesName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="images" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_tblDiseasesPredictionList_tblDiseases">
+          <End Role="tblDiseases" Type="Self.tblDiseases" Multiplicity="0..1" />
+          <End Role="tblDiseasesPredictionList" Type="Self.tblDiseasesPredictionList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDiseases">
+              <PropertyRef Name="DiseasesID" />
+            </Principal>
+            <Dependent Role="tblDiseasesPredictionList">
+              <PropertyRef Name="DiseasesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblDiseasesPredictionList_tblSymptomsPrediction">
+          <End Role="tblSymptomsPrediction" Type="Self.tblSymptomsPrediction" Multiplicity="0..1" />
+          <End Role="tblDiseasesPredictionList" Type="Self.tblDiseasesPredictionList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSymptomsPrediction">
+              <PropertyRef Name="SymptomsPredictionID" />
+            </Principal>
+            <Dependent Role="tblDiseasesPredictionList">
+              <PropertyRef Name="SymptomsPredictionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblDoctorAppointment_tblDiseasesPredictionList">
+          <End Role="tblDiseasesPredictionList" Type="Self.tblDiseasesPredictionList" Multiplicity="0..1" />
+          <End Role="tblDoctorAppointment" Type="Self.tblDoctorAppointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDiseasesPredictionList">
+              <PropertyRef Name="DiseasesPredictionListID" />
+            </Principal>
+            <Dependent Role="tblDoctorAppointment">
+              <PropertyRef Name="DiseasesPredictionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblDoctorAppointment_tblUserRegistration">
+          <End Role="tblUserRegistration" Type="Self.tblUserRegistration" Multiplicity="0..1" />
+          <End Role="tblDoctorAppointment" Type="Self.tblDoctorAppointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUserRegistration">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tblDoctorAppointment">
+              <PropertyRef Name="PaitentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblDoctorAppointment_tblUserRegistration1">
+          <End Role="tblUserRegistration" Type="Self.tblUserRegistration" Multiplicity="0..1" />
+          <End Role="tblDoctorAppointment" Type="Self.tblDoctorAppointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUserRegistration">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tblDoctorAppointment">
+              <PropertyRef Name="DoctorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSymptomsPrediction_tblSymptomsList">
+          <End Role="tblSymptomsList" Type="Self.tblSymptomsList" Multiplicity="0..1" />
+          <End Role="tblSymptomsPrediction" Type="Self.tblSymptomsPrediction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSymptomsList">
+              <PropertyRef Name="SymptomsID" />
+            </Principal>
+            <Dependent Role="tblSymptomsPrediction">
+              <PropertyRef Name="SymptomsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SmartHealthPredicationEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblDiseases" EntityType="Self.tblDiseases" />
+          <EntitySet Name="tblDiseasesPredictionList" EntityType="Self.tblDiseasesPredictionList" />
+          <EntitySet Name="tblDoctorAppointment" EntityType="Self.tblDoctorAppointment" />
+          <EntitySet Name="tblSymptomsList" EntityType="Self.tblSymptomsList" />
+          <EntitySet Name="tblSymptomsPrediction" EntityType="Self.tblSymptomsPrediction" />
+          <EntitySet Name="tblUserRegistration" EntityType="Self.tblUserRegistration" />
+          <EntitySet Name="View_AppoinmentList" EntityType="Self.View_AppoinmentList" />
+          <EntitySet Name="View_DiseasesPrediction" EntityType="Self.View_DiseasesPrediction" />
+          <AssociationSet Name="FK_tblDiseasesPredictionList_tblDiseases" Association="Self.FK_tblDiseasesPredictionList_tblDiseases">
+            <End Role="tblDiseases" EntitySet="tblDiseases" />
+            <End Role="tblDiseasesPredictionList" EntitySet="tblDiseasesPredictionList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblDiseasesPredictionList_tblSymptomsPrediction" Association="Self.FK_tblDiseasesPredictionList_tblSymptomsPrediction">
+            <End Role="tblSymptomsPrediction" EntitySet="tblSymptomsPrediction" />
+            <End Role="tblDiseasesPredictionList" EntitySet="tblDiseasesPredictionList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblDoctorAppointment_tblDiseasesPredictionList" Association="Self.FK_tblDoctorAppointment_tblDiseasesPredictionList">
+            <End Role="tblDiseasesPredictionList" EntitySet="tblDiseasesPredictionList" />
+            <End Role="tblDoctorAppointment" EntitySet="tblDoctorAppointment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblDoctorAppointment_tblUserRegistration" Association="Self.FK_tblDoctorAppointment_tblUserRegistration">
+            <End Role="tblUserRegistration" EntitySet="tblUserRegistration" />
+            <End Role="tblDoctorAppointment" EntitySet="tblDoctorAppointment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblDoctorAppointment_tblUserRegistration1" Association="Self.FK_tblDoctorAppointment_tblUserRegistration1">
+            <End Role="tblUserRegistration" EntitySet="tblUserRegistration" />
+            <End Role="tblDoctorAppointment" EntitySet="tblDoctorAppointment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSymptomsPrediction_tblSymptomsList" Association="Self.FK_tblSymptomsPrediction_tblSymptomsList">
+            <End Role="tblSymptomsList" EntitySet="tblSymptomsList" />
+            <End Role="tblSymptomsPrediction" EntitySet="tblSymptomsPrediction" />
+          </AssociationSet>
+          <EntitySet Name="tblUserRole" EntityType="SmartHealthPredicationModel.tblUserRole" />
+          <AssociationSet Name="FK_tblUserRegistration_tblUserRole" Association="SmartHealthPredicationModel.FK_tblUserRegistration_tblUserRole">
+            <End Role="tblUserRole" EntitySet="tblUserRole" />
+            <End Role="tblUserRegistration" EntitySet="tblUserRegistration" />
+          </AssociationSet>
+          <EntitySet Name="tblFeedBack" EntityType="SmartHealthPredicationModel.tblFeedBack" />
+          <AssociationSet Name="FK_tblFeedBack_tblUserRegistration" Association="SmartHealthPredicationModel.FK_tblFeedBack_tblUserRegistration">
+            <End Role="tblUserRegistration" EntitySet="tblUserRegistration" />
+            <End Role="tblFeedBack" EntitySet="tblFeedBack" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblFeedBack_tblUserRegistration1" Association="SmartHealthPredicationModel.FK_tblFeedBack_tblUserRegistration1">
+            <End Role="tblUserRegistration" EntitySet="tblUserRegistration" />
+            <End Role="tblFeedBack" EntitySet="tblFeedBack" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="tblUserRole">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblUserRegistration" Relationship="SmartHealthPredicationModel.FK_tblUserRegistration_tblUserRole" FromRole="tblUserRole" ToRole="tblUserRegistration" />
+        </EntityType>
+        <Association Name="FK_tblUserRegistration_tblUserRole">
+          <End Type="SmartHealthPredicationModel.tblUserRole" Role="tblUserRole" Multiplicity="0..1" />
+          <End Type="SmartHealthPredicationModel.tblUserRegistration" Role="tblUserRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUserRole">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="tblUserRegistration">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblFeedBack">
+          <Key>
+            <PropertyRef Name="FeedBackID" />
+          </Key>
+          <Property Name="FeedBackID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientID" Type="Int32" />
+          <Property Name="PatientName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DoctorID" Type="Int32" />
+          <Property Name="DoctorName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Rating" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Feedback" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblUserRegistration" Relationship="SmartHealthPredicationModel.FK_tblFeedBack_tblUserRegistration" FromRole="tblFeedBack" ToRole="tblUserRegistration" />
+          <NavigationProperty Name="tblUserRegistration1" Relationship="SmartHealthPredicationModel.FK_tblFeedBack_tblUserRegistration1" FromRole="tblFeedBack" ToRole="tblUserRegistration" />
+        </EntityType>
+        <Association Name="FK_tblFeedBack_tblUserRegistration">
+          <End Type="SmartHealthPredicationModel.tblUserRegistration" Role="tblUserRegistration" Multiplicity="0..1" />
+          <End Type="SmartHealthPredicationModel.tblFeedBack" Role="tblFeedBack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUserRegistration">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tblFeedBack">
+              <PropertyRef Name="PatientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblFeedBack_tblUserRegistration1">
+          <End Type="SmartHealthPredicationModel.tblUserRegistration" Role="tblUserRegistration" Multiplicity="0..1" />
+          <End Type="SmartHealthPredicationModel.tblFeedBack" Role="tblFeedBack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUserRegistration">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tblFeedBack">
+              <PropertyRef Name="DoctorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SmartHealthPredicationModelStoreContainer" CdmEntityContainer="SmartHealthPredicationEntities">
+          <EntitySetMapping Name="tblDiseases">
+            <EntityTypeMapping TypeName="SmartHealthPredicationModel.tblDiseases">
+              <MappingFragment StoreEntitySet="tblDiseases">
+                <ScalarProperty Name="DiseasesID" ColumnName="DiseasesID" />
+                <ScalarProperty Name="DiseasesName" ColumnName="DiseasesName" />
+                <ScalarProperty Name="images" ColumnName="images" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDiseasesPredictionList">
+            <EntityTypeMapping TypeName="SmartHealthPredicationModel.tblDiseasesPredictionList">
+              <MappingFragment StoreEntitySet="tblDiseasesPredictionList">
+                <ScalarProperty Name="DiseasesPredictionListID" ColumnName="DiseasesPredictionListID" />
+                <ScalarProperty Name="SymptomsPredictionID" ColumnName="SymptomsPredictionID" />
+                <ScalarProperty Name="DiseasesID" ColumnName="DiseasesID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDoctorAppointment">
+            <EntityTypeMapping TypeName="SmartHealthPredicationModel.tblDoctorAppointment">
+              <MappingFragment StoreEntitySet="tblDoctorAppointment">
+                <ScalarProperty Name="AppointmentID" ColumnName="AppointmentID" />
+                <ScalarProperty Name="PaitentID" ColumnName="PaitentID" />
+                <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+                <ScalarProperty Name="DiseasesPredictionID" ColumnName="DiseasesPredictionID" />
+                <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+                <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSymptomsList">
+            <EntityTypeMapping TypeName="SmartHealthPredicationModel.tblSymptomsList">
+              <MappingFragment StoreEntitySet="tblSymptomsList">
+                <ScalarProperty Name="SymptomsID" ColumnName="SymptomsID" />
+                <ScalarProperty Name="SymptomsName" ColumnName="SymptomsName" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSymptomsPrediction">
+            <EntityTypeMapping TypeName="SmartHealthPredicationModel.tblSymptomsPrediction">
+              <MappingFragment StoreEntitySet="tblSymptomsPrediction">
+                <ScalarProperty Name="SymptomsPredictionID" ColumnName="SymptomsPredictionID" />
+                <ScalarProperty Name="SymptomsID" ColumnName="SymptomsID" />
+                <ScalarProperty Name="SymptomsPredictionName" ColumnName="SymptomsPredictionName" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUserRegistration">
+            <EntityTypeMapping TypeName="SmartHealthPredicationModel.tblUserRegistration">
+              <MappingFragment StoreEntitySet="tblUserRegistration">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="UserFullName" ColumnName="UserFullName" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="MoblieNumber" ColumnName="MoblieNumber" />
+                <ScalarProperty Name="AdharCardNumber" ColumnName="AdharCardNumber" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_AppoinmentList">
+            <EntityTypeMapping TypeName="SmartHealthPredicationModel.View_AppoinmentList">
+              <MappingFragment StoreEntitySet="View_AppoinmentList">
+                <ScalarProperty Name="AppointmentID" ColumnName="AppointmentID" />
+                <ScalarProperty Name="PaitentID" ColumnName="PaitentID" />
+                <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+                <ScalarProperty Name="SymptomsID" ColumnName="SymptomsID" />
+                <ScalarProperty Name="DiseasesPredictionID" ColumnName="DiseasesPredictionID" />
+                <ScalarProperty Name="SymptomsPredictionID" ColumnName="SymptomsPredictionID" />
+                <ScalarProperty Name="SymptomsPredictionName" ColumnName="SymptomsPredictionName" />
+                <ScalarProperty Name="DiseasesID" ColumnName="DiseasesID" />
+                <ScalarProperty Name="DiseasesName" ColumnName="DiseasesName" />
+                <ScalarProperty Name="images" ColumnName="images" />
+                <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+                <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_DiseasesPrediction">
+            <EntityTypeMapping TypeName="SmartHealthPredicationModel.View_DiseasesPrediction">
+              <MappingFragment StoreEntitySet="View_DiseasesPrediction">
+                <ScalarProperty Name="DiseasesPredictionListID" ColumnName="DiseasesPredictionListID" />
+                <ScalarProperty Name="SymptomsPredictionID" ColumnName="SymptomsPredictionID" />
+                <ScalarProperty Name="SymptomsPredictionName" ColumnName="SymptomsPredictionName" />
+                <ScalarProperty Name="DiseasesID" ColumnName="DiseasesID" />
+                <ScalarProperty Name="DiseasesName" ColumnName="DiseasesName" />
+                <ScalarProperty Name="images" ColumnName="images" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUserRole">
+            <EntityTypeMapping TypeName="SmartHealthPredicationModel.tblUserRole">
+              <MappingFragment StoreEntitySet="tblUserRole">
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFeedBack">
+            <EntityTypeMapping TypeName="SmartHealthPredicationModel.tblFeedBack">
+              <MappingFragment StoreEntitySet="tblFeedBack">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Feedback" ColumnName="Feedback" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="DoctorName" ColumnName="DoctorName" />
+                <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+                <ScalarProperty Name="PatientName" ColumnName="PatientName" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="FeedBackID" ColumnName="FeedBackID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
