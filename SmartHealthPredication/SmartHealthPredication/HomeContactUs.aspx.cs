@@ -30,7 +30,7 @@ namespace SmartHealthPredication
             sb.Append("Subject: " + tbContactSubject.Text + " <br/>");
             sb.Append("Description: " + tbContactQuery.Text + " <br/>");
             sb.Append("<br/><br/>");
-            sb.Append("Smart Health Predication<br/> ");
+            sb.Append("Smart Health Prediction<br/> ");
 
             sb.Append("</body>");
             sb.Append("</html>");

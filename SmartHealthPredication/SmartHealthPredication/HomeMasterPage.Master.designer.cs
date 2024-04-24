@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SmartHealthPredication {
-    
-    
-    public partial class HomeMasterPage {
-        
+namespace SmartHealthPredication
+{
+
+
+    public partial class HomeMasterPage
+    {
+
         /// <summary>
         /// head control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace SmartHealthPredication {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
-        
+
         /// <summary>
         /// form1 control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace SmartHealthPredication {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
+
         /// <summary>
         /// imglogo control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace SmartHealthPredication {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton imglogo;
-        
+
         /// <summary>
         /// lnkBtnLogin control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace SmartHealthPredication {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkBtnLogin;
-        
+
         /// <summary>
         /// lnkBtnLogout control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace SmartHealthPredication {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkBtnLogout;
-        
+
         /// <summary>
         /// lb1 control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace SmartHealthPredication {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lb1;
-        
+
         /// <summary>
         /// ContentPlaceHolder1 control.
         /// </summary>

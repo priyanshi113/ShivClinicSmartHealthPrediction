@@ -11,7 +11,7 @@
     <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina" />
     <link rel="shortcut icon" href="img/favicon.png" />
     <link rel="shortcut icon" href="assets/img/Svg/health-care.png" />
-    <title>404-Smart Health Predication</title>
+    <title>404-Smart Health Prediction</title>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/bootstrap-reset.css" rel="stylesheet" />

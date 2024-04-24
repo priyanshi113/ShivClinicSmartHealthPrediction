@@ -12,7 +12,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <![endif]-->
     <link rel="shortcut icon" href="assets/img/Svg/health-care.png" />
-    <title>Smart Health Predication</title>
+    <title>Smart Health Prediction</title>
 
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
@@ -63,8 +63,8 @@
                                 <span class="icon-bar"></span>
                             </button>
                             <a class="navbar-brand" href="Home"></a>
-                            <%-- <img src="assets/img/Svg/health-care.png" /><b>SMART HEALTH PREDICATION</b>--%>
-                            <asp:ImageButton ID="imglogo" runat="server" ValidationGroup="imglogo" ImageUrl="assets/img/Svg/health-care.png" /><b>SMART HEALTH PREDICATION</b>
+                            <%-- <img src="assets/img/Svg/health-care.png" /><b>SMART HEALTH PREDICTION</b>--%>
+                            <asp:ImageButton ID="imglogo" runat="server" ValidationGroup="imglogo" ImageUrl="assets/img/Svg/health-care.png" /><b>SMART HEALTH PREDICTION</b>
                         </div>
                         <div class="navbar-collapse collapse ">
                             <ul id="menu-top" class="nav navbar-nav navbar-right">
@@ -874,7 +874,7 @@
                     <h3><strong>SOCIAL PRESENCE</strong> </h3>
                     We love to be social,Catch Us On
                 <a href="#">
-                    <h4>FACEBOOK </h4>
+                    <h4>GitHub </h4>
                 </a>
 
 
@@ -884,16 +884,16 @@
                     <h3><strong>PHYSICAL LOCATION</strong> </h3>
                     Reach Us Below:
                 <br />
-                    <h4>Bardoli – Navsari Road, Isroli, Afwa,</h4>
-                    <h4>Bardoli, Surat, Gujarat ,</h4>
-                    <h4>Pin: 394620</h4>
+                    <h4>Bardoli –   Janta Nagar Society</h4>
+                    <h4>Bardoli, Surat, Gujarat,</h4>
+                    <h4>Pin: 394601</h4>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <hr />
                     <div style="text-align: right; padding: 5px;">
-                        &copy;2017 Smart Health Predication | <a href="#" style="color: #fff;" target="_blank">Designed By: Smart Health Predication Team</a>
+                        &copy;2024 Smart Health Prediction | <a href="#" style="color: #fff;" target="_blank">Designed By: Smart Health Prediction Team</a>
                     </div>
                 </div>
             </div>

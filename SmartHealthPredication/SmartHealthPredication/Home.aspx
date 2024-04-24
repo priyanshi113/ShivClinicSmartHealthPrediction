@@ -34,7 +34,7 @@
 
                     <img src="assets/img/4.jpg" alt="" />
                     <div class="carousel-caption">
-                        <h1 class="wow slideInLeft" data-wow-duration="5s">Disease Predication</h1>
+                        <h1 class="wow slideInLeft" data-wow-duration="5s">Disease Prediction</h1>
                         <h2 class="wow slideInRight" data-wow-duration="5s">Select Your Symptoms</h2>
                     </div>
 
